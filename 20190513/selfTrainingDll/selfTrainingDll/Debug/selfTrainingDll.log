@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  selfTrainingDll.cpp
+  Generating Code...
+     Creating library F:\gitplay\C++\20190513\selfTrainingDll\Debug\selfTrainingDll.lib and object F:\gitplay\C++\20190513\selfTrainingDll\Debug\selfTrainingDll.exp
+  selfTrainingDll.vcxproj -> F:\gitplay\C++\20190513\selfTrainingDll\Debug\selfTrainingDll.dll

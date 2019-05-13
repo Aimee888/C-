@@ -7,6 +7,7 @@
 using namespace std;
 
 #include <windows.h>
+#include <conio.h>
 
 HWND HMainwnd = NULL; //窗体句柄
 HWND HButton = NULL;
@@ -14,16 +15,98 @@ int run(); //消息循环函数
 bool InitWindowsApp(HINSTANCE instanceHandle, int show); //窗体初始化函数
 LRESULT CALLBACK WndProc(HWND wnd, UINT msg, WPARAM wp, LPARAM lp);//窗体处理
 
-int tag = 1;
+int tag = 10;
 int tag1 = 12;
+
+//#define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0) //必要的，我是背下来的
+
+
+//void color(int a) {//改变输出的颜色，比system("color x")快得多
+//	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), a);
+//	/*
+//	<span style="white-space:pre">	</span>字
+//		1	深蓝色
+//		2	深绿色
+//		3	深青色
+//		4	深红色
+//		5	深粉色
+//		6	黄色
+//		7	深白色
+//		8	灰色
+//		9	浅蓝色
+//		10	浅绿色
+//		11	浅青色
+//		12	浅红色
+//		13	浅粉色
+//		14	浅黄色
+//		15	浅白色
+//
+//		背景
+//		1~15		黑色
+//		16~31		深蓝色
+//		32~47		深绿色
+//		48~63		深青色
+//		64~79		深红色
+//		80~95		深粉色
+//		96~111		深黄色
+//		112~127 	深白色
+//		128~143 	灰色
+//		144~159 	浅蓝色
+//		160~175 	浅绿色
+//		176~191 	浅青色
+//		192~207 	浅红色
+//		208~223 	浅粉色
+//		224~239 	浅黄色
+//		240~255 	浅白色
+//	*/
+//}
+
+
+//void check(char c) {//检测某个按键是否按下，按下就改变输出颜色
+//	if (!KEY_DOWN(c))color(7);
+//	else color(112);
+//	printf("  %c  ", c);
+//	color(7);
+//}
 
 int main(int argc, char* argv[], HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
     cout << "Hello World!\n"; 
+
+	//获取键盘输入方式1
+	//int ch;
+	//while (1) {
+	//	if (_kbhit()) {//如果有按键按下，则_kbhit()函数返回真
+	//		ch = _getch();//使用_getch()函数获取按下的键值
+	//		cout << char(ch);
+	//		if (ch == 27) { break; }//当按下ESC时循环，ESC键的键值时27.
+	//	}
+	//}
+	//system("pause");
+
+	//获取键盘输入方式2
+	//while (1) {
+	//	check('Q'); check('W'); check('E'); check('R'); check('T'); check('Y'); check('U'); check('I'); check('O'); check('P');
+	//	printf("\n\n ");
+	//	check('A'); check('S'); check('D'); check('F'); check('G'); check('H'); check('J'); check('K'); check('L');
+	//	printf("\n\n  ");
+	//	check('Z'); check('X'); check('C'); check('V'); check('B'); check('N'); check('M');
+	//	printf("\n\n  ");
+	//	check('0'); check('1'); check('2'); check('3'); check('4'); check('5'); check('6');
+	//	printf("\n\n  ");
+	//	check('7'); check('8'); check('9'); check('/'); check('*'); check('+'); check('-');
+	//	printf("\n\n  ");
+
+	//	Sleep(20);//循环时间间隔，防止太占内存 
+	//	system("cls");//清屏 
+	//}
+	
 	if (!InitWindowsApp(hInstance, nShowCmd)) {
 		cout << "初始化失败" << endl;
 	}
 	run();
+	cout << "aaa";
+	return 0;
 }
 
 bool InitWindowsApp(HINSTANCE stanceHandle, int show) {
@@ -122,7 +205,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 			WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
 			530, 260, 75, 20, hwnd, NULL,
 			(HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE), NULL);
-		hwndButton[9] = CreateWindow(L"BUTTON", L"10",
+		hwndButton[9] = CreateWindow(L"BUTTON", L"A",
 			WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
 			530, 290, 75, 20, hwnd, NULL,
 			(HINSTANCE)GetWindowLong(hwnd, GWL_HINSTANCE), NULL);
@@ -236,6 +319,52 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 			}
 		}
 		//_sleep(1 * 1000);
+		DestroyWindow(hwnd);
+		return 0;
+	case WM_CHAR:
+		switch (wParam) {
+		case 0x30:
+			tag1 = 0;
+			break;
+		case 0x31:
+			tag1 = 1;
+			break;
+		case 0x32:
+			tag1 = 2;
+			break;
+		case 0x33:
+			tag1 = 3;
+			break;
+		case 0x34:
+			tag1 = 4;
+			break;
+		case 0x35:
+			tag1 = 5;
+			break;
+		case 0x36:
+			tag1 = 6;
+			break;
+		case 0x37:
+			tag1 = 7;
+			break;
+		case 0x38:
+			tag1 = 8;
+			break;
+		case 0x39:
+			tag1 = 9;
+			break;
+		case 0x41:
+			tag1 = 10;
+			break;
+		default:
+			break;
+		}
+		if (tag1 == tag) {
+			cout << "True" << endl;
+		}
+		else {
+			cout << "False" << endl;
+		}
 		DestroyWindow(hwnd);
 		return 0;
 	case WM_CLOSE: //关闭

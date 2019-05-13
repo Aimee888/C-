@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  Dll1.cpp
+  dllmain.cpp
+  Generating Code...
+     Creating library F:\gitplay\C++\20190513\Dll1\Debug\Dll1.lib and object F:\gitplay\C++\20190513\Dll1\Debug\Dll1.exp
+  Dll1.vcxproj -> F:\gitplay\C++\20190513\Dll1\Debug\Dll1.dll
