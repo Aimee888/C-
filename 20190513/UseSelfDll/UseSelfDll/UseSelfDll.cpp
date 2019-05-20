@@ -13,13 +13,9 @@ using namespace std;
 
 int main()
 {
-
-	typedef int(*_print)();
-	cout << "1" << endl;
+	typedef int (*_print)();
 	HINSTANCE hDll = LoadLibrary(L"selfTrainingDll.dll");
-	cout << "2" << endl;
-	_print pAdd = (_print)GetProcAddress(hDll, (LPCSTR)MAKEINTRESOURCE(7));
-	cout << "3" << endl;
+	_print pAdd = (_print)GetProcAddress(hDll, "export333");
 	int a = pAdd();
 	cout << a << endl;
 	//arithmetic_operation ao;
