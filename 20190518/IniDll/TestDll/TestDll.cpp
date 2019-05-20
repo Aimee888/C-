@@ -102,7 +102,7 @@ void DeleteFile_d() {
 	//cin >> path_str;
 	
 	char path_str[128] = "F:\\vc_work\\20190516\\TestDll\\Release\\aaa.ini";
-	char sec_str[20] = "83E7";
+	char sec_str[20] = "8377";
 	//char key_str[20] = "Device3.name";
 
 	//Ini_Del_Key(sec_str, key_str, path_str);
